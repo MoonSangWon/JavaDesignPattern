@@ -11,8 +11,9 @@ public class App {
         String command = Prompt.inputString("명령> ");
 
         switch(command) {
-          case "학생등록": studentHandler.add(); break;
-          case "학생조회": studentHandler.list(); break;
+          case "/student/add": studentHandler.add(); break;
+          case "/student/list": studentHandler.list(); break;
+          case "/first" : studentHandler.FirstPlace(); break;
 
           case "quit" : 
           case "exit" :

@@ -3,9 +3,10 @@ package mini.project;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class StudentHandler {
-  ArrayList<Student> studentList = new ArrayList<Student>();
+  List<Student> studentList = new ArrayList<Student>();
 
   public void add() {
     System.out.println("[학생 정보 입력]");
@@ -44,7 +45,7 @@ public class StudentHandler {
       }
 
       System.out.printf("이름 : %s\n성별 : %s\n학년 : %s\n국어 : %d\n영어 : %d\n"
-          + "수학 : %d\n합계 : %d\n평균 : %.1f\n등록일 : %s\n",
+          + "수학 : %d\n합계 : %d\n평균 : %.1f\n등록일 : %s\n\n",
           student.getName(),
           genderLabel,
           student.getGrade(),
@@ -55,9 +56,30 @@ public class StudentHandler {
           student.getAver(),
           student.getRegisteredDate());
     }
-
-
   }
 
+  public void FirstPlace() {
+    for(int i = 0; i < studentList.size(); i++) {
+      Student student = studentList.get(i); //
+
+
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
