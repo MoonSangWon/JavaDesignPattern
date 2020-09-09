@@ -11,29 +11,35 @@ public class StudentHandler {
 
   public void StudentSystem() {
     int num = 0;
-    while((num = StudentMenu()) != 0) {
-      switch (num) {
-        case 1: add(); break;
-        case 2: scoreAdd(); break;
-        case 3: studentList(); break;
-        case 4: StudentDetail(); break;
-        case 5: FirstPlace(); break;
-        case 6: BottomPlace(); break;
-        case 7: studentUpdate(); break;
+    loop:
+      while((num = StudentMenu()) != 0) {
+        switch (num) {
+          case 1: add(); break;
+          case 2: scoreAdd(); break;
+          case 3: studentList(); break;
+          case 4: StudentDetail(); break;
+          case 5: studentUpdate(); break;
+          case 6: studentDelete(); break;
+          case 7: FirstPlace(); break;
+          case 8: BottomPlace(); break;
+
+          case 0: System.out.println("학생등록시스템 종료"); break loop;
+          default : System.out.println("잘못된 명령입니다."); 
+        }
+        System.out.println();
       }
-      System.out.println();
-    }
   }
 
   public int StudentMenu() {
     return Prompt.inputInt(
-        "[1]학생정보입력"
-            + " [2]학생성적입력"
-            + " [3]전체학생"
-            + " [4]학생 상세조회\n"
-            + "[5]1등총합"
-            + " [6]꼴지총합"
-            + " [7]학생 정보수정"
+        "[1]학생 정보 입력"
+            + " [2]학생 성적 입력"
+            + " [3]전체 학생"
+            + " [4]학생 상세 조회\n"
+            + "[5]학생 정보 수정"
+            + " [6]학생 정보 삭제"
+            + " [7]1등 총합"
+            + " [8]꼴지 총합"
             + " [0]종료");
 
   }
@@ -48,7 +54,6 @@ public class StudentHandler {
       return;
     }
 
-    student.setGrade(Prompt.inputString("학생 학년? "));
     student.setKor(Prompt.inputInt("국어성적? "));
     student.setEng(Prompt.inputInt("영어성적? "));
     student.setMath(Prompt.inputInt("수학성적? "));
@@ -67,6 +72,7 @@ public class StudentHandler {
     student.setNo(Prompt.inputInt("학생 번호? "));
     student.setName(Prompt.inputString("학생 이름? "));
     student.setGender(Prompt.inputInt("학생 성별? (1: 남자 / 2 : 여자)"));
+    student.setGrade(Prompt.inputString("학생 학년? "));
 
     student.setRegisteredDate(new Date(System.currentTimeMillis()));
 
@@ -165,6 +171,26 @@ public class StudentHandler {
     System.out.println("학생 정보를 변경하였습니다.");
   }
 
+  public void studentDelete() {
+    System.out.println("[학생 정보 삭제]");
+    int no = Prompt.inputInt("번호? ");
+    int index = indexOf(no);
+
+    if(index == -1) {
+      System.out.println("해당 번호의 학생이 없습니다.");
+      return;
+    }
+
+    String response = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
+    if(!response.equalsIgnoreCase("y")) {
+      System.out.println("삭제 취소.");
+      return;
+    }
+
+    studentList.remove(index);
+    System.out.println("삭제 완료.");
+  }
+
   public void FirstPlace() {
     System.out.println("[1등 출력]");
     Iterator<Student> iterator = studentList.iterator();
@@ -218,5 +244,16 @@ public class StudentHandler {
       }
     }
     return null;
+  }
+
+
+  private int indexOf(int no) {
+    for (int i = 0; i < studentList.size(); i++) {
+      Student student = studentList.get(i);
+      if (student.getNo() == no) {
+        return i;
+      }
+    }
+    return -1;
   }
 }
