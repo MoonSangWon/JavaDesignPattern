@@ -62,8 +62,8 @@ public class StudentHandler {
   }
 
   public void FirstPlace() {
+    System.out.println("[1등 출력]");
     for(int i = 0; i < studentList.size(); i++) {
-      System.out.println("[1등 출력]");
       Student student = studentList.get(i); //
 
 
