@@ -18,9 +18,6 @@ public class App {
         switch(command) {
           case 1: member.System(); break;
           case 2: studentHandler.StudentSystem(); break;
-          //          case 2: studentHandler.add(); break;
-          //          case 3: studentHandler.list(); break;
-          //          case 4: studentHandler.FirstPlace(); break;
 
           case 0 : 
             System.out.println("프로그램 종료");
@@ -29,6 +26,5 @@ public class App {
         }
         System.out.println();
       }
-    Prompt.close();
   }
 }
