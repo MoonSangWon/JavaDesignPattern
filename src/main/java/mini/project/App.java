@@ -4,11 +4,11 @@
 package mini.project;
 
 public class App {
-  public String getGreeting() {
-    return "Hello world.";
-  }
+	public String getGreeting() {
+		return "Hello world123";
+	}
 
-  public static void main(String[] args) {
-    System.out.println("자바 첫번째 팀프로젝트");
-  }
+	public static void main(String[] args) {
+		System.out.println("자바 첫번째 팀프로젝트");
+	}
 }
