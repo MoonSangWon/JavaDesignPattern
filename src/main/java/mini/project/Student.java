@@ -4,15 +4,40 @@ import java.sql.Date;
 
 public class Student {
 
+  private int no;
   private String name;
   private int gender;
   private String grade;
   private int kor;
   private int eng;
   private int math;
+  private int sum;
+  private float aver;
+
   private Date registeredDate;
 
   private static final int LENGTH = 5;
+
+  public int getSum() {
+    return sum;
+  }
+
+  public void setSum(int kor, int eng, int math) {
+    sum = kor+eng+math;
+    aver = sum/3.f;
+  }
+
+  public float getAver() {
+    return aver;
+  }
+
+  public int getNo() {
+    return no;
+  }
+
+  public void setNo(int no) {
+    this.no = no;
+  }
 
   public String getName() {
     return name;
