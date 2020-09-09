@@ -78,7 +78,7 @@ public class Member {
 	}
 
 	public int menu() {
-		return Prompt.inputInt("[1]로그인 [2]회원가입 [3]전체회원");
+		return Prompt.inputInt("[1]로그인 [2]회원가입 [3]전체회원 [0]종료");
 	}
 
 
