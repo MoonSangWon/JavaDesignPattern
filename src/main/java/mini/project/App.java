@@ -8,9 +8,9 @@ public class App {
     Member member = new Member();
 
 
-    System.out.printf("1. 학생성적관리\n2. 학생등록\n3. 학생조회\n4. 1등보기\n5. 종료\n");
     loop:
       while(true) {
+        System.out.printf("1. 학생성적관리\n2. 학생등록\n3. 학생조회\n4. 1등총합보기\n5. 종료\n");
         int command = Prompt.inputInt("명령> ");
 
 

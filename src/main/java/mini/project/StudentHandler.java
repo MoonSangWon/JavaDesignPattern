@@ -62,12 +62,17 @@ public class StudentHandler {
   }
 
   public void FirstPlace() {
-    System.out.println("[1등 출력]");
+    System.out.println("[1등총합 출력]");
+
+    int max = -1;
+    String name = null;
     for(int i = 0; i < studentList.size(); i++) {
-      Student student = studentList.get(i); //
-
-
+      Student students = studentList.get(i);
+      if(students.getSum() > max) {
+        max = students.getSum();
+      }
     }
+    System.out.printf("전교 1등 총합 : %d\n", max);
   }
 }
 
