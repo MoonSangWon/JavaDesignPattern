@@ -9,11 +9,9 @@ public class Teacher {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
-			System.out.print("ID : ");
-			String Id = scanner.nextLine();
+			String Id = Prompt.inputString("ID : ");
 
-			System.out.print("Password : ");
-			String Password = scanner.nextLine();
+			String Password = Prompt.inputString("Password : ");
 
 			Login l = new Login(Id, Password);
 			boolean result = l.Test();
