@@ -11,6 +11,6 @@ public class App {
 
 	public static void main(String[] args) {
 		System.out.println("자바 첫번째 팀프로젝트!!");
-		System.out.println("오호라");
+		System.out.println("오호라!");
 	}
 }
