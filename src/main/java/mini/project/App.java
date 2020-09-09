@@ -10,5 +10,7 @@ public class App {
 
   public static void main(String[] args) {
     System.out.println("자바 첫번째 팀프로젝트");
+    System.out.println("체리식 키보드는 하이톤의 목소리가 납니다.");
+    System.out.println("설정하는데 너무 많은 시간이 걸립니다.");
   }
 }
