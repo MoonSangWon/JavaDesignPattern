@@ -22,6 +22,7 @@ public class StudentHandler {
           case 6: studentDelete(); break;
           case 7: FirstPlace(); break;
           case 8: BottomPlace(); break;
+          case 9: teacherComment(); break;
 
           case 0: System.out.println("학생등록시스템 종료"); break loop;
           default : System.out.println("잘못된 명령입니다."); 
@@ -29,6 +30,7 @@ public class StudentHandler {
         System.out.println();
       }
   }
+
 
   public int StudentMenu() {
     return Prompt.inputInt(
@@ -40,8 +42,8 @@ public class StudentHandler {
             + " [6]학생 정보 삭제"
             + " [7]1등 총합"
             + " [8]꼴지 총합"
+            + " [9]선생님 코멘트"
             + " [0]종료");
-
   }
 
   private void scoreAdd() {
@@ -131,6 +133,7 @@ public class StudentHandler {
     System.out.printf("수학 : %s\n", student.getMath());
     System.out.printf("총합 : %s\n", student.getSum());
     System.out.printf("평균 : %s\n", student.getAver());
+    System.out.printf("코멘트 : %s\n", student.getComment());
   }
 
   public void studentUpdate() {
@@ -221,13 +224,13 @@ public class StudentHandler {
 
   public void BottomPlace() {
     System.out.println("[꼴지 출력]");
+    Iterator<Student> iterator = studentList.iterator();
 
     int[] bottom = new int[studentList.size()];
     int min = bottom[0];
 
-    for(int i = 0; i < studentList.size(); i++) {
-
-      Student student = studentList.get(i);
+    while(iterator.hasNext()) {
+      Student student = iterator.next();
       if(student.getSum() < min) {
         min = student.getSum();
       }
@@ -235,6 +238,21 @@ public class StudentHandler {
     System.out.println("꼴지 총합 : " + min);
     System.out.println("격려가 필요합니다.");
   }
+
+  private void teacherComment() {
+    System.out.println("[선생님 코멘트]");
+    int no = Prompt.inputInt("코멘트 입력할 학생 번호? ");
+    Student student = findByNo(no);
+
+    if(student == null) {
+      System.out.println("해당 번호의 학생이 없습니다.");
+      return;
+    }
+
+    student.setComment(Prompt.inputString("한줄 코멘트를 입력하세요.\n"));
+
+  }
+
 
   private Student findByNo(int no) {
     for(int i = 0; i < studentList.size(); i++) {

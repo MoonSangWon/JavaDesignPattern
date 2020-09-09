@@ -13,10 +13,21 @@ public class Student {
   private int math;
   private int sum;
   private float aver;
+  private String comment;
 
   private Date registeredDate;
 
   private static final int LENGTH = 5;
+
+
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
 
   public int getSum() {
     return sum;
