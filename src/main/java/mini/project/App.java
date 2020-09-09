@@ -5,18 +5,22 @@ public class App {
 
 
     StudentHandler studentHandler = new StudentHandler();
+    Member member = new Member();
+
 
     loop:
       while(true) {
-        String command = Prompt.inputString("명령> ");
+        System.out.printf("1. 학생성적관리\n2. 학생등록\n3. 학생조회\n4. 1등보기\n5. 종료\n");
+        int command = Prompt.inputInt("명령> ");
+
 
         switch(command) {
-          case "/student/add": studentHandler.add(); break;
-          case "/student/list": studentHandler.list(); break;
-          case "/first" : studentHandler.FirstPlace(); break;
+          case 1: member.System(); break;
+          case 2: studentHandler.add(); break;
+          case 3: studentHandler.list(); break;
+          case 4: studentHandler.FirstPlace(); break;
 
-          case "quit" : 
-          case "exit" :
+          case 5 : 
             System.out.println("프로그램 종료");
             break loop;
           default : System.out.println("잘못된 명령입니다."); 

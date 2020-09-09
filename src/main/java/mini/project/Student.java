@@ -27,6 +27,10 @@ public class Student {
     aver = sum/3.f;
   }
 
+  public void setAver(float aver) {
+    this.aver = aver;
+  }
+
   public float getAver() {
     return aver;
   }

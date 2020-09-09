@@ -20,6 +20,9 @@ public class StudentHandler {
     student.setKor(Prompt.inputInt("국어성적? "));
     student.setEng(Prompt.inputInt("영어성적? "));
     student.setMath(Prompt.inputInt("수학성적? "));
+
+    student.setSum(student.getKor(), student.getEng(), student.getMath());
+
     student.setRegisteredDate(new Date(System.currentTimeMillis()));
 
     studentList.add(student);
@@ -60,6 +63,7 @@ public class StudentHandler {
 
   public void FirstPlace() {
     for(int i = 0; i < studentList.size(); i++) {
+      System.out.println("[1등 출력]");
       Student student = studentList.get(i); //
 
 
