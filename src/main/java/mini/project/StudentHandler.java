@@ -40,8 +40,8 @@ public class StudentHandler {
             + " [4]학생 상세 조회\n"
             + "[5]학생 정보 수정"
             + " [6]학생 정보 삭제"
-            + " [7]1등 총합"
-            + " [8]꼴지 총합"
+            + " [7]1등은? "
+            + " [8]꼴찌는? "
             + " [9]선생님 코멘트");
   }
 
@@ -60,7 +60,6 @@ public class StudentHandler {
     student.setMath(Prompt.inputInt("수학성적? "));
     student.setSum(student.getKor(), student.getEng(), student.getMath());
   }
-
 
   private void add() {
     System.out.println("[학생 정보 입력]");
@@ -99,30 +98,32 @@ public class StudentHandler {
 
   public void studentList() {
     System.out.println("[전체 학생 목록]");
-    int grade = Prompt.inputInt("**학년을 입력해주세요.**");
+    String grade = Prompt.inputString("**학년을 입력해주세요.**");
     Iterator<Student> iterator = studentList.iterator();
 
 
     while(iterator.hasNext()) {
       Student student = iterator.next();
+      if(student.getGrade().equals(grade)) {
 
-      String genderLabel = null;
-      switch(student.getGender()) {
-        case 1: genderLabel = "남자"; break;
-        case 2: genderLabel = "여자"; break;
+        String genderLabel = null;
+        switch(student.getGender()) {
+          case 1: genderLabel = "남자"; break;
+          case 2: genderLabel = "여자"; break;
+        }
+
+        System.out.printf("이름 : %s\n성별 : %s\n학년 : %s\n국어 : %d\n영어 : %d\n"
+            + "수학 : %d\n합계 : %d\n평균 : %.1f\n등록일 : %s\n\n",
+            student.getName(),
+            genderLabel,
+            student.getGrade(),
+            student.getKor(),
+            student.getEng(),
+            student.getMath(),
+            student.getSum(),
+            student.getAver(),
+            student.getRegisteredDate());
       }
-
-      System.out.printf("이름 : %s\n성별 : %s\n학년 : %s\n국어 : %d\n영어 : %d\n"
-          + "수학 : %d\n합계 : %d\n평균 : %.1f\n등록일 : %s\n\n",
-          student.getName(),
-          genderLabel,
-          student.getGrade(),
-          student.getKor(),
-          student.getEng(),
-          student.getMath(),
-          student.getSum(),
-          student.getAver(),
-          student.getRegisteredDate());
     }
   }
 
@@ -230,7 +231,7 @@ public class StudentHandler {
       }
     }
 
-    System.out.printf("1등은? ==> %s : %d\n",name, max);
+    System.out.printf("1등은? ==> %s : %d점\n",name, max);
     System.out.println("와우! 대단해요!");
     System.out.println();
     //    int max = -1;
@@ -244,8 +245,7 @@ public class StudentHandler {
     //    System.out.println("와우! 대단해요!");
   }
 
-  // 최소값 출력이 안됌 아마 다른 배열의 값이 다 0이라 0만 나오는 것 같음
-  // 해결할 알고리즘을 구현하지 못하겠음
+
   public void BottomPlace() {
     System.out.println("[꼴지 출력]");
 
