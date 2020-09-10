@@ -31,19 +31,18 @@ public class StudentHandler {
       }
   }
 
-
   public int StudentMenu() {
+    System.out.println("**0번을 누르면 메인 창으로 이동됩니다.**");
     return Prompt.inputInt(
         "[1]학생 정보 입력"
             + " [2]학생 성적 입력"
-            + " [3]전체 학생"
+            + " [3]전체 학생 목록"
             + " [4]학생 상세 조회\n"
             + "[5]학생 정보 수정"
             + " [6]학생 정보 삭제"
             + " [7]1등 총합"
             + " [8]꼴지 총합"
-            + " [9]선생님 코멘트"
-            + " [0]종료");
+            + " [9]선생님 코멘트");
   }
 
   private void scoreAdd() {
@@ -59,9 +58,7 @@ public class StudentHandler {
     student.setKor(Prompt.inputInt("국어성적? "));
     student.setEng(Prompt.inputInt("영어성적? "));
     student.setMath(Prompt.inputInt("수학성적? "));
-
     student.setSum(student.getKor(), student.getEng(), student.getMath());
-
   }
 
 
@@ -94,7 +91,7 @@ public class StudentHandler {
 
 
   public void studentList() {
-    System.out.println("[학생 목록]");
+    System.out.println("[전체 학생 목록]");
 
     Iterator<Student> iterator = studentList.iterator();
 
@@ -131,6 +128,7 @@ public class StudentHandler {
       return;
     }
 
+    System.out.printf("번호 : %s\n", student.getNo());
     System.out.printf("이름 : %s\n", student.getName());
     String genderLabel = null;
     switch(student.getGender()) {
@@ -144,7 +142,10 @@ public class StudentHandler {
     System.out.printf("수학 : %s\n", student.getMath());
     System.out.printf("총합 : %s\n", student.getSum());
     System.out.printf("평균 : %s\n", student.getAver());
-    System.out.printf("코멘트 : %s\n", student.getComment());
+
+    if(student.getComment() != null) {
+      System.out.printf("코멘트 : %s\n", student.getComment());
+    }
   }
 
   public void studentUpdate() {
@@ -183,6 +184,7 @@ public class StudentHandler {
     student.getSum();
 
     System.out.println("학생 정보를 변경하였습니다.");
+    System.out.println();
   }
 
   public void studentDelete() {
@@ -203,6 +205,7 @@ public class StudentHandler {
 
     studentList.remove(index);
     System.out.println("삭제 완료.");
+    System.out.println();
   }
 
   public void FirstPlace() {
@@ -221,7 +224,7 @@ public class StudentHandler {
 
     System.out.println("1등 총합 : " + max);
     System.out.println("와우! 대단해요!");
-
+    System.out.println();
     //    int max = -1;
     //    for(int i = 0; i < studentList.size(); i++) {
     //      Student student = studentList.get(i);
@@ -248,6 +251,7 @@ public class StudentHandler {
     }
     System.out.println("꼴지 총합 : " + min);
     System.out.println("이 학생은 격려가 필요합니다.");
+    System.out.println();
   }
 
   private void teacherComment() {
@@ -259,11 +263,8 @@ public class StudentHandler {
       System.out.println("해당 번호의 학생이 없습니다.");
       return;
     }
-
     student.setComment(Prompt.inputString("한줄 코멘트를 입력하세요.\n"));
-
   }
-
 
   private Student findByNo(int no) {
     for(int i = 0; i < studentList.size(); i++) {
@@ -274,7 +275,6 @@ public class StudentHandler {
     }
     return null;
   }
-
 
   private int indexOf(int no) {
     for (int i = 0; i < studentList.size(); i++) {
