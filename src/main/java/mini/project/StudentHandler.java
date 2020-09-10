@@ -65,13 +65,24 @@ public class StudentHandler {
   }
 
 
-  public void add() {
+  private void add() {
     System.out.println("[학생 정보 입력]");
 
     Student student = new Student();
 
+    while(true) {
+      int number = Prompt.inputInt("학생 번호?(0 : 등록취소) ");
+      if (number == 0) {
+        System.out.println("학생 등록을 취소합니다.");
+        return;
+      } else if(this.indexOf(number) != 0) {
+        student.setNo(number);
+        break;
+      } else {
+        System.out.println("이미 등록된 학생번호입니다.");
+      }
+    }
 
-    student.setNo(Prompt.inputInt("학생 번호? "));
     student.setName(Prompt.inputString("학생 이름? "));
     student.setGender(Prompt.inputInt("학생 성별? (1: 남자 / 2 : 여자)"));
     student.setGrade(Prompt.inputString("학생 학년? "));
@@ -195,7 +206,7 @@ public class StudentHandler {
   }
 
   public void FirstPlace() {
-    System.out.println("[1등 출력]");
+    System.out.println("[1등 점수 출력]");
     Iterator<Student> iterator = studentList.iterator();
 
     int[] first = new int[studentList.size()];
@@ -223,7 +234,7 @@ public class StudentHandler {
   }
 
   public void BottomPlace() {
-    System.out.println("[꼴지 출력]");
+    System.out.println("[꼴지 점수 출력]");
     Iterator<Student> iterator = studentList.iterator();
 
     int[] bottom = new int[studentList.size()];
@@ -236,7 +247,7 @@ public class StudentHandler {
       }
     }
     System.out.println("꼴지 총합 : " + min);
-    System.out.println("격려가 필요합니다.");
+    System.out.println("이 학생은 격려가 필요합니다.");
   }
 
   private void teacherComment() {
