@@ -82,13 +82,20 @@ public class StudentHandler {
 
     student.setName(Prompt.inputString("학생 이름? "));
     student.setGender(Prompt.inputInt("학생 성별? (1: 남자 / 2 : 여자)"));
-    student.setGrade(Prompt.inputString("학생 학년? "));
+
+    String grade = Prompt.inputString("학생 학년? ");
+    int num = Integer.parseInt(grade);
+    if(num < 0 || num > 4) {
+      System.out.println("잘못된 입력값입니다.");
+      return;
+    } else {
+      student.setGrade(grade);
+    }
 
     student.setRegisteredDate(new Date(System.currentTimeMillis()));
 
     studentList.add(student);
   }
-
 
   public void studentList() {
     System.out.println("[전체 학생 목록]");
@@ -170,7 +177,6 @@ public class StudentHandler {
 
     student.setSum(kor, eng, math);
 
-
     String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
       System.out.println("변경을 취소하였습니다.");
@@ -209,20 +215,21 @@ public class StudentHandler {
   }
 
   public void FirstPlace() {
-    System.out.println("[1등 점수 출력]");
+    System.out.println("[1등 출력]");
     Iterator<Student> iterator = studentList.iterator();
 
     int[] first = new int[studentList.size()];
     int max = first[0];
-
+    String name = null;
     while(iterator.hasNext()) {
       Student student = iterator.next();
       if(student.getSum() > max) {
         max = student.getSum();
+        name = student.getName();
       }
     }
 
-    System.out.println("1등 총합 : " + max);
+    System.out.printf("1등은? ==> %s : %d\n",name, max);
     System.out.println("와우! 대단해요!");
     System.out.println();
     //    int max = -1;
@@ -236,20 +243,23 @@ public class StudentHandler {
     //    System.out.println("와우! 대단해요!");
   }
 
+  // 최소값 출력이 안됌 아마 다른 배열의 값이 다 0이라 0만 나오는 것 같음
+  // 해결할 알고리즘을 구현하지 못하겠음
   public void BottomPlace() {
-    System.out.println("[꼴지 점수 출력]");
-    Iterator<Student> iterator = studentList.iterator();
+    System.out.println("[꼴지 출력]");
 
     int[] bottom = new int[studentList.size()];
     int min = bottom[0];
+    String name = null;
+    for(int i = 1; i < studentList.size(); i++) {
+      Student student = studentList.get(i);
 
-    while(iterator.hasNext()) {
-      Student student = iterator.next();
       if(student.getSum() < min) {
         min = student.getSum();
+        name = student.getName();
       }
     }
-    System.out.println("꼴지 총합 : " + min);
+    System.out.printf("꼴지 ==> %s : %d\n", name, min);
     System.out.println("이 학생은 격려가 필요합니다.");
     System.out.println();
   }

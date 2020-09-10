@@ -10,10 +10,9 @@ public class App {
 
     loop:
       while(true) {
-        System.out.println("[성적관리시스템 메인]");
+        System.out.println("[비트 고등학교 성적관리시스템 메인]");
         System.out.printf("[1] 학생성적관리\n[2] 학생등록\n[0] 종료\n");
         int command = Prompt.inputInt("명령> ");
-
 
         switch(command) {
           case 1: member.System(); break;
