@@ -61,7 +61,7 @@ public class Member {
 				System.out.println("다시 입력하시오.");
 			} else if(member.getPassword().equals(Password)) {
 				System.out.println("학생정보관리시스템에 접속하였습니다.");
-				stu.StudentMenu();
+				stu.StudentSystem();
 				break;
 			} else {
 				System.out.println("입력하신 패스워드가 일치하지 않습니다.");
