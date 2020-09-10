@@ -34,8 +34,17 @@ public class Member {
 	private void TeacherJoin() {
 		String Id = Prompt.inputString("ID : ");
 		String Password = Prompt.inputString("Password : ");
+		String Password2 = Prompt.inputString("Password Confirm : ");
 		String Name = Prompt.inputString("Name : ");
-		members.add(new MemberLogin(Id, Password, Name));
+
+		if(TestId(Id)) {
+			System.out.println("중복된 ID입니다.");
+		} else if(Password.equals(Password2)) {
+			members.add(new MemberLogin(Id, Password, Name));
+			System.out.println("회원가입이 완료되었습니다.");
+		} else {
+			System.out.println("비밀번호를 다시 입력하시오.");
+		}
 	}
 
 	private void TeacherLogin() {
@@ -45,12 +54,14 @@ public class Member {
 			String Password = Prompt.inputString("Password : ");
 
 			MemberLogin member = FindId(Id);
+			StudentHandler stu = new StudentHandler();
 
 			if (member == null) {
 				System.out.println("입력하신 아이디가 일치하지 않습니다.");
 				System.out.println("다시 입력하시오.");
 			} else if(member.getPassword().equals(Password)) {
 				System.out.println("학생정보관리시스템에 접속하였습니다.");
+				stu.StudentMenu();
 				break;
 			} else {
 				System.out.println("입력하신 패스워드가 일치하지 않습니다.");
