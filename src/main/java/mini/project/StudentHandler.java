@@ -36,7 +36,7 @@ public class StudentHandler {
     return Prompt.inputInt(
         "[1]학생 정보 입력"
             + " [2]학생 성적 입력"
-            + " [3]전체 학생 목록"
+            + " [3]학생 목록"
             + " [4]학생 상세 조회\n"
             + "[5]학생 정보 수정"
             + " [6]학생 정보 삭제"
@@ -97,7 +97,7 @@ public class StudentHandler {
   }
 
   public void studentList() {
-    System.out.println("[전체 학생 목록]");
+    System.out.println("[학생 목록]");
     String grade = Prompt.inputString("**학년을 입력해주세요.**");
     Iterator<Student> iterator = studentList.iterator();
 
