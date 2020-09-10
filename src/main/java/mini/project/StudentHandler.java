@@ -99,8 +99,9 @@ public class StudentHandler {
 
   public void studentList() {
     System.out.println("[전체 학생 목록]");
-
+    int grade = Prompt.inputInt("**학년을 입력해주세요.**");
     Iterator<Student> iterator = studentList.iterator();
+
 
     while(iterator.hasNext()) {
       Student student = iterator.next();
