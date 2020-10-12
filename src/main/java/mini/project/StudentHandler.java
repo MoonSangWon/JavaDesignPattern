@@ -257,18 +257,29 @@ public class StudentHandler {
 
   public void BottomPlace() {
     System.out.println("[꼴지 출력]");
-
+    Iterator<Student> iterator = studentList.iterator();
     int min = studentList.get(0).getSum();
-    System.out.println(min);
-    String name = null;
-    for (int i = 1; i < studentList.size(); i++) {
-      Student student = studentList.get(i);
+    String name = studentList.get(0).getName();
 
-      if (student.getSum() < min) {
+    while(iterator.hasNext()) {
+      Student student = iterator.next();
+      if(student.getSum() < min) {
         min = student.getSum();
         name = student.getName();
       }
     }
+    //
+    //    int min = studentList.get(0).getSum();
+    //    System.out.println(min);
+    //    String name = null;
+    //    for (int i = 1; i < studentList.size(); i++) {
+    //      Student student = studentList.get(i);
+    //
+    //      if (student.getSum() < min) {
+    //        min = student.getSum();
+    //        name = student.getName();
+    //      }
+    //    }
     System.out.printf("꼴지 ==> %s : %d\n", name, min);
     System.out.println("이 학생은 격려가 필요합니다.");
     System.out.println();
