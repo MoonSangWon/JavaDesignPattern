@@ -1,18 +1,28 @@
 plugins {
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'java'
-    id 'application'
-    id 'eclipse'
 }
+group = 'SpringBoot'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    implementation 'com.google.guava:guava:29.0-jre'
-    testImplementation 'junit:junit:4.13'
+    implementation 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-application {
-    mainClassName = 'mini.project.App'
+tasks.named('test') {
+    useJUnitPlatform()
 }
+

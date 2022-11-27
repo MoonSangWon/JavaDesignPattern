@@ -1,13 +1,18 @@
-package mini.project;
+package mini.project.entity.student;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Date;
-
+@Getter@Setter
 public class Student {
 
-  private int no;
-  private String name;
-  private int gender;
-  private String grade;
+  private int number; //번호
+  private int cl;//반
+  private String name; //이름
+  private int gender; //성별
+  private int grade; //학년
   private int kor;
   private int eng;
   private int math;
@@ -18,8 +23,16 @@ public class Student {
   private Date registeredDate;
 
   private static final int LENGTH = 5;
+  public Student(){
+    this.number=0;this.cl=0;this.name="";this.gender=1;
+    this.grade=0;this.kor=0;this.eng=0;this.math=0;this.sum=0;this.aver =0;this.comment="";
+  }
+  public void setSum(int kor, int eng, int math) {
+    sum = kor+eng+math;
+    aver = sum/3.f;
+  }
 
-
+/*
 
   public String getComment() {
     return comment;
@@ -33,10 +46,7 @@ public class Student {
     return sum;
   }
 
-  public void setSum(int kor, int eng, int math) {
-    sum = kor+eng+math;
-    aver = sum/3.f;
-  }
+
 
   public void setAver(float aver) {
     this.aver = aver;
@@ -115,5 +125,6 @@ public class Student {
   }
 
 
+*/
 
 }

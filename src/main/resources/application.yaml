@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:Codebase;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+    driver-class-name: org.h2.Driver
+    username: root
+    password:
+ h2:
+   console:
+     enable: true
+ jpa:
+   show-sql: true
+   hibernate:
+     ddl-auto: validate
+     format_sql: true
+ mve:
+   pathmatch:
+     matching-stragegy: ant_path_matcher

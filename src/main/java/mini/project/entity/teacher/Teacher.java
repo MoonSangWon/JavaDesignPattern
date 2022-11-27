@@ -1,21 +1,27 @@
-package mini.project;
+package mini.project.entity.teacher;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import mini.project.Prompt;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 
-public class Member {
+@Getter@Setter
+public class Teacher {
 
-	List<MemberLogin> members = new ArrayList<>();
-	Scanner scanner = new Scanner(System.in);
+	private String id;
+	private String password;
+	private String teacherName;
 
-	public Member() {
-		members.add(new MemberLogin("admin", "1234", "Kim"));
+	public Teacher(String id, String password, String teacherName){
+		this.id =id;
+		this.password = password;
+		this.teacherName = teacherName;
 	}
-
-	public void System() {
+	/*public void System() {
 		int num = 0;
 		while ((num = menu()) != 0) {
 			switch (num) {
@@ -29,9 +35,9 @@ public class Member {
 				TeacherList();
 			}
 		}
-	}
+	}*/
 
-	private void TeacherJoin() {
+	/*private void TeacherJoin() {
 		String Id = Prompt.inputString("ID : ");
 		String Password = Prompt.inputString("Password : ");
 		String Password2 = Prompt.inputString("Password Confirm : ");
@@ -40,20 +46,20 @@ public class Member {
 		if(TestId(Id)) {
 			System.out.println("중복된 ID입니다.");
 		} else if(Password.equals(Password2)) {
-			members.add(new MemberLogin(Id, Password, Name));
+			members.add(new Teacherdto(Id, Password, Name));
 			System.out.println("회원가입이 완료되었습니다.");
 		} else {
 			System.out.println("비밀번호를 다시 입력하시오.");
 		}
 	}
-
-	private void TeacherLogin() {
+*/
+	/*private void TeacherLogin() {
 		while (true) {
 			String Id = Prompt.inputString("ID : ");
 
 			String Password = Prompt.inputString("Password : ");
 
-			MemberLogin member = FindId(Id);
+			Teacherdto member = FindId(Id);
 			StudentHandler stu = new StudentHandler();
 
 			if (member == null) {
@@ -68,43 +74,29 @@ public class Member {
 				System.out.println("다시 입력하시오.");
 			}
 		}
-	}
+	}*/
 
-	public boolean TestId(String Id) {
+	/*public boolean TestId(String Id) {
 		boolean check = true;
-		MemberLogin member = FindId(Id);
+		Teacherdto member = FindId(Id);
 		if (member == null)
 			check = false;
 		return check;
 
-	}
+	}*/
 
-	private MemberLogin FindId(String Id) {
-		for(MemberLogin memberLogin : members) {
+	/*private Teacherdto FindId(String Id) {
+		for(Teacherdto memberLogin : members) {
 			if(memberLogin.getId().equals(Id)) {
 				return memberLogin;
 			}
 		}
 		return null;
-	}
+	}*/
 
-	public int menu() {
+	/*public int menu() {
 		return Prompt.inputInt("[1]로그인 [2]회원가입 [3]전체회원 [0]종료");
-	}
-
-
-
-	public void TeacherList() {
-		System.out.println("[관리자 목록]");
-
-		Iterator<MemberLogin> ite = members.iterator();
-
-		while(ite.hasNext()) {
-			System.out.println(ite.next() + " ");
-		}
-	}
-
-
+	}*/
 
 
 }
