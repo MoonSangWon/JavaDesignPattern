@@ -105,7 +105,6 @@ public class StudentServiceImpl implements StudentService{
             System.out.printf("수학 : %s\n", student.getMath());
             System.out.printf("총합 : %s\n", student.getSum());
             System.out.printf("평균 : %s\n", student.getAver());
-
             if (student.getComment() != null) {
                 System.out.printf("코멘트 : %s\n", student.getComment());
             }
@@ -124,9 +123,12 @@ public class StudentServiceImpl implements StudentService{
         if (isstudent == false)System.out.println("해당 학년 학급 번호의 학생이 없습니다.");
         else{
             student = studentIterator.setByStudent(grade,cl,number);
-            int kor = Prompt.inputInt(String.format("국어(%s)? ", student.getKor()));
-            int eng = Prompt.inputInt(String.format("영어(%s)? ", student.getEng()));
-            int math = Prompt.inputInt(String.format("수학(%s)? ", student.getMath()));
+            int kor = Prompt.inputInt(String.format("국어? "));
+            student.setKor(kor);
+            int eng = Prompt.inputInt(String.format("영어? "));
+            student.setEng(eng);
+            int math = Prompt.inputInt(String.format("수학? "));
+            student.setMath(math);
 
             student.setSum(kor, eng, math);
             String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");

@@ -1,7 +1,5 @@
 package mini.project.entity.student;
 
-import mini.project.entity.teacher.Teacher;
-
 public interface StudentIterator {
     public void findAll();
 

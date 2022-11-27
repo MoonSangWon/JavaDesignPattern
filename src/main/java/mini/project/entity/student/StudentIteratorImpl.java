@@ -1,10 +1,9 @@
 package mini.project.entity.student;
 
-import mini.project.entity.teacher.Teacher;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 
 public class StudentIteratorImpl implements StudentIterator{
 
@@ -27,8 +26,10 @@ public class StudentIteratorImpl implements StudentIterator{
 
     @Override
     public Boolean findByStudent(int grade, int cl, int number) {
-        for(Student search :students){
-            if(search.getGrade()==grade &&search.getCl()==cl && search.getNumber()==number)
+        Iterator<Student> findAllStudent = students.iterator();
+        while(findAllStudent.hasNext()==true){
+            Student student = findAllStudent.next();
+            if(student.getCl()==cl&&student.getGrade()==grade&&student.getNumber()==number)
                 return true;
         }
         return false;
@@ -36,9 +37,11 @@ public class StudentIteratorImpl implements StudentIterator{
 
     @Override
     public Student setByStudent(int grade, int cl, int number){
-        for(Student search :students){
-            if(search.getGrade()==grade &&search.getCl()==cl && search.getNumber()==number)
-                return search;
+        Iterator<Student> findAllStudent = students.iterator();
+        while(findAllStudent.hasNext()==true) {
+            Student student = findAllStudent.next();
+            if (student.getCl() == cl && student.getGrade() == grade && student.getNumber() == number)
+                return student;
         }
         return null;
     }
